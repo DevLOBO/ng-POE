@@ -1,0 +1,8 @@
+<div>
+    <h3 mat-dialog-title>Confirmación</h3>
+    <mat-dialog-content>¿Estás seguro de eliminar a {{ data.element }}?</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button class="btn btn-secondary" mat-dialog-close>No</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true">Sí</button>
+    </mat-dialog-actions>
+</div>

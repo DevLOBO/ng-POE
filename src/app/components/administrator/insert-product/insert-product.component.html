@@ -1,0 +1,47 @@
+<div class="animated lightSpeedIn">
+    <h3>Nuevo producto</h3>
+    <form class="w-100" [formGroup]="newProduct">
+        <mat-form-field class="w-75 form-group">
+            <input matInput placeholder="Nombre del producto" formControlName="name">
+            <mat-error *ngIf="name.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-75 form-group">
+            <input matInput placeholder="Hecho por" formControlName="by">
+            <mat-error *ngIf="by.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-75 form-group">
+            <textarea matInput rows="6" placeholder="Descripción" formControlName="description"></textarea>
+            <mat-error *ngIf="description.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field><br/>
+        <mat-form-field class="w-25 form-group">
+            <mat-select placeholder="Departamento" formControlName="departament">
+                <mat-option *ngFor="let departament of departaments" [value]="departament.id">{{ departament.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="departament.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-25 form-group">
+            <mat-label>Precio</mat-label>
+            <input matInput placeholder="$0.00" formControlName="price">
+            <mat-error *ngIf="price.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-25 form-group">
+            <input matInput placeholder="Existencias" formControlName="stock">
+            <mat-error *ngIf="stock.hasError('required')">El campo es <b>requerido</b></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-75 form-group">
+            <input matInput placeholder="Url del Demo" type="url" formControlName="demoUrl">
+            <mat-error *ngIf="demoUrl.hasError('pattern')">Url inválida</mat-error>
+            <mat-error *ngIf="demoUrl.hasError('required')">Este campo es <b>requerido</b></mat-error>
+        </mat-form-field><br/>
+        <div class="form-group">
+            <label>Imagen:</label>
+            <input class="form-control-file" type="file" formControlName="image" (change)="setImage($event.target.files[0])">
+        </div>
+        <div class="form-group">
+            <button mat-raised-button color="accent" [disabled]="newProduct.invalid" (click)="addProduct()">
+            <span *ngIf="!loading">Añadir producto</span>
+            <span *ngIf="loading"><i class="fas fa-sync fa-spin infinite"></i> Agregando el producto</span>
+        </button>
+        </div>
+    </form>
+</div>

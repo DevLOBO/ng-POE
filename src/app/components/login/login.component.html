@@ -1,0 +1,21 @@
+<div class="animated fadeIn">
+    <form class="w-25 mx-auto mt-5" [formGroup]="formLogin">
+        <h3 class="my-5">Login</h3>
+        <mat-form-field class="form-group">
+            <input matInput placeholder="Usuario" type="text" formControlName="username" class="w-100">
+            <mat-error *ngIf="formLogin.get('username').invalid">El campo es requerido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+            <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" formControlName="password" class="w-100">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="formLogin.get('password').invalid">El campo es requerido</mat-error>
+        </mat-form-field>
+        <mat-radio-group class="form-check form-check-inline" formControlName="type">
+            <mat-radio-button class="form-check-input" value="U">Usuario</mat-radio-button>
+            <mat-radio-button class="form-check-input" value="A">Administrador</mat-radio-button>
+        </mat-radio-group>
+        <div class="form-group">
+            <button mat-raised-button color="accent" [disabled]="formLogin.invalid" (click)="login()">Entrar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<app-toolbar></app-toolbar>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="row mt-5 animated lightSpeedIn" *ngIf="!loading && product">
+    <div class="col-4">
+        <img [src]="product.image" class="w-100">
+    </div>
+    <div class="col-8">
+        <h3>{{ product.name }}<br/><small>{{ product.by }}</small></h3>
+        <p class="mt-5 text-center">{{ product.description }}</p>
+        <p class="text-right">
+            Costo: {{ product.price | currency }}
+            <span *ngIf="+product.stock > 0"><br/>Existencias: {{ product.stock }}</span>
+            <span *ngIf="product.stock === 0">AGOTADO</span>
+        </p>
+        <div class="w-100 my-4 text-center">
+            <iframe Wide="560" height="315" [src]="product.demoUrl | domSecure:'video'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="mt-5">
+            <button mat-button class="btn-secondary" (click)="back()"><i class="fas fa-arrow-left"></i></button>
+            <button *ngIf="product.stock > 0" mat-raised-button color="accent" (click)="buy()">Comprar</button>
+        </div>
+    </div>
+</div>

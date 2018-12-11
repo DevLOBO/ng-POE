@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "prueba-e92ee"
+  },
+  "hosting": {
+        "public": "dist/POE",
+    }
+}

@@ -1,0 +1,16 @@
+<div>
+    <h3 mat-dialog-title>Actualizar usuario</h3>
+    <form [formGroup]="updatedUser">
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Usuario" formControlName="username">
+        </mat-form-field>
+        <mat-radio-group formControlName="type">
+            <mat-radio-button value="A">Administrador</mat-radio-button>
+            <mat-radio-button class="ml-3" value="U">Usuario</mat-radio-button>
+        </mat-radio-group>
+        <mat-dialog-actions>
+            <button mat-raised-button class="btn btn-secondary" mat-dialog-close>Cancelar</button>
+            <button mat-raised-button color="accent" [mat-dialog-close]="updatedUser.value" [disabled]="updatedUser.invalid">Guardar cambios</button>
+        </mat-dialog-actions>
+    </form>
+</div>

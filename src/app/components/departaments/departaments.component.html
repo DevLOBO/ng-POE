@@ -1,0 +1,18 @@
+<app-toolbar></app-toolbar>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<mat-tab-group class="clearfix" *ngIf="!loading">
+    <mat-tab *ngFor="let departament of departaments">
+        <ng-template mat-tab-label>{{ departament.name }}</ng-template>
+        <div class="card-columns mt-5">
+            <div *ngFor="let product of departament.products" class="card animated zoomInDown slow" (click)="goToProduct(departament.id, product.id)">
+                <img class="card-img-top" [src]="product.image | domSecure:'img-fb'">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description | cutString:100 }}</p>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
